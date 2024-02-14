@@ -3,9 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wordLove</title>
+    <title>💞wordLove🌐</title>
 </head>
 <body>
-    
+
+    <div class = "heartWithWord">
+        <img class = "heartFlag" id = "languageFlagImage">
+        <div class = "overlayWord" id = "wordInTargetLanguage"></div>
+    </div>
+
+    <div class = "languageInfoBadge">
+        <h3 id = "languageName"></h3>
+        <p id = "languageInfo"></p>
+    </div>
+
+    <div class = "buttons">
+        <button onclick = "location.reload()">again!</button>
+        <button onclick = "window.open('https://github.com/JakeDaSpud/wordLove')" target = "_blank">github!</button>
+    </div>
+
 </body>
+
+<style>
+    /* colour palette: https://lospec.com/palette-list/wisteria-mystery
+        #ffffdb
+        #ffc5bb
+        #ff99a1
+        #a06689
+    */
+
+body {
+    font-family: Chubby Cheeks, sans-serif;
+
+    background-image: linear-gradient(270deg, #ffc5bb, #ff99a1);
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h3 {
+    color: #f4f4f4;
+
+    text-shadow: 
+        -1px -1px 0 #f5babf,  
+         1px -1px 0 #ff99a1,
+        -1px  1px 0 #eb8e95,
+         1px  1px 0 #d7838a;
+}
+
+.buttons {
+    margin: 5px;
+    flex-direction: row;
+}
+
+button {
+    font-weight: bold;
+    color: #fff;
+    background-color: #e790c4;
+    padding: 10px 20px;
+    margin: 2px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #a06689;
+    text-decoration: underline;
+}
+
+.heartWithWord {
+    /*background-color: aquamarine;*/
+    display: inline-block;
+    position: relative;
+}
+
+.overlayWord {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bolder;
+    font-size: larger;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.heartFlag {
+    width: 250px;
+    height: 200px;
+
+    /* heart mask: https://css-tip.com/image-heart-shape/ */
+    mask:
+        radial-gradient(at 70% 31%,#000 29%,#0000 30%),
+        radial-gradient(at 30% 31%,#000 29%,#0000 30%),
+        linear-gradient(#000 0 0) bottom/100% 50% no-repeat;
+    clip-path: polygon(-41% 0,50% 91%, 141% 0);
+}
+
+.languageInfoBadge {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+
+<script>
+
+//storing data
+const langDataJSON = '{ "languages" : [' +
+'{ "wordInTargetLanguage":"Love" , "languageName":"English" , "info":"English is a West Germanic language of the Indo-European language family, spoken by Anglophones." , "flagLink":"flags/englishFlag.png" },' +
+'{ "wordInTargetLanguage":"Amor" , "languageName":"Spanish" , "info":"Spanish is a Romance language of the Indo-European language family, spoken by Hispanics." , "flagLink":"flags/spanishFlag.png" },' +
+'{ "wordInTargetLanguage":"Amor" , "languageName":"Portuguese" , "info":"Portuguese is a Romance language of the Indo-European language family, spoken by Lusophones." , "flagLink":"flags/portugueseFlag.png" },' +
+'{ "wordInTargetLanguage":"Miłość" , "languageName":"Polish" , "info":"Polish is a West Slavic language of the Indo-European language family, spoken by Poles." , "flagLink":"flags/polishFlag.png" },' +
+'{ "wordInTargetLanguage":"Amour" , "languageName":"French" , "info":"French is a Romance language of the Indo-European language family, spoken by Francophones." , "flagLink":"flags/frenchFlag.png" },' +
+'{ "wordInTargetLanguage":"प्यार<br>Pyaar" , "languageName":"Hindi" , "info":"Hindi is an Indo-Aryan language of the Indo-European language family." , "flagLink":"flags/hindiFlag.png" },' +
+'{ "wordInTargetLanguage":"സ്നേഹം<br>Sneham" , "languageName":"Malayalam" , "info":"Malayalam is a Dravidian language spoken in the Indian state of Kerala and spoken by Malayalis." , "flagLink":"flags/malayalamFlag.png" },' +
+'{ "wordInTargetLanguage":"ความรัก<br>Khwaam Rak" , "languageName":"Thai" , "info":"Thai is a member of the Tai (Kra-Dai) language family." , "flagLink":"flags/thaiFlag.png" },' +
+'{ "wordInTargetLanguage":"愛<br>Ai" , "languageName":"Japanese" , "info":"Japanese is a Japonic language." , "flagLink":"flags/japaneseFlag.png" },' +
+'{ "wordInTargetLanguage":"爱<br>Ài" , "languageName":"Chinese (Mandarin)" , "info":"Mandarin Chinese is a variety of Chinese spoken across most of Northern and Southwestern China." , "flagLink":"flags/chineseFlag.png" },' +
+'{ "wordInTargetLanguage":"Meilė" , "languageName":"Lithuanian" , "info":"Lithuanian is a Baltic language of the Indo-European language family." , "flagLink":"flags/lithuanianFlag.png" },' +
+'{ "wordInTargetLanguage":"Liebe" , "languageName":"German" , "info":"German is a West Germanic language of the Indo-European language family." , "flagLink":"flags/germanFlag.png" },' +
+'{ "wordInTargetLanguage":"Pag-ibig" , "languageName":"Tagalog" , "info":"Tagalog is an Austronesian language spoken and is a popular language for Filipinos." , "flagLink":"flags/tagalogFlag.png" }' +
+']}';
+
+
+//parsing data
+const langData = JSON.parse(langDataJSON);
+
+//rand number for langData; randomly choose a language
+let randomLanguage = Math.floor(Math.random() * langData.languages.length);
+
+//randomLanguage = 0;
+
+//setting all data in document
+document.getElementById("wordInTargetLanguage").innerHTML = langData.languages[randomLanguage].wordInTargetLanguage;
+document.getElementById("languageName").innerHTML = langData.languages[randomLanguage].languageName;
+document.getElementById("languageInfo").innerHTML = langData.languages[randomLanguage].info;
+document.getElementById("languageFlagImage").src = langData.languages[randomLanguage].flagLink;
+
+</script>
+
 </html>

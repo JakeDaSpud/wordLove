@@ -5,19 +5,19 @@ this website is a fun little project to practice some js, site theming, and shar
 
 ## ✅MoSCoW to-do / update log🪵
 ### must have 💳💥
-- [ ] at least 1 set of data (language; word for love; language description; flag image asset)
-- [ ] random set of data on enter / refresh
-- [ ] big word for love
-- [ ] small info badge for language name and information below the word for love
-- [ ] centred elements
-- [ ] responsive elements
+- [x] at least 1 set of data (language; word for love; language description; flag image asset)
+- [x] random set of data on enter / refresh
+- [x] big word for love
+- [x] small info badge for language name and information below the word for love
+- [x] centred elements
+- [x] responsive elements
 
 ### should have 😄👍
-- [ ] button to refresh page
-- [ ] flag is cut to shape of heart
-- [ ] link to my github :D
-- [ ] cute background image asset
-- [ ] about 15 words / languages
+- [x] button to refresh page
+- [x] flag is cut to shape of heart
+- [x] link to my github :D
+- [x] cute background image asset
+- [x] about 15 words / languages
 
 ### could have (but won't... yet) 🤔💭
 - [ ] selecting sepcific language
@@ -25,5 +25,5 @@ this website is a fun little project to practice some js, site theming, and shar
 - [ ] playable song on click (somethin' stupid cover?)
 
 ## 📚sources📝
-[flag #n]()\
-[language translation #n]()
+flags taken from their wikipedias\
+[colour palette](https://lospec.com/palette-list/wisteria-mystery)
